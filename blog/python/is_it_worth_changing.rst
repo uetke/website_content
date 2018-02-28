@@ -15,7 +15,8 @@ Labs and corporations are very different in the availability of human resources 
 
 Traditionally, developing software for a setup was a synonym of National Instruments’ LabView. It is a graphical programming language, in which you can quickly build user interfaces by dragging boxes and making connections on a screen. Many other companies provide drivers for it and therefore if you want, for example, to acquire an image from a camera, there was already code written in LabView that you could use as an example. I can understand the success it had twenty years ago when computer literacy was much lower than what it is today: it has relatively low entry barrier and myriads of devices supporting it.
 
-.. image:: {attach}team_training.jpg
+.. image:: {filename}team_training.jpg
+   :alt: Team Training
 
 Nowadays it is not safe to assume that all scientists are proficient in programming languages, but it is very fair to assume that computer literacy is much higher than twenty years ago. This means that it is much more likely to find someone comfortable writing a for loop than dragging cable connections on a computer screen. And partly this happened thanks to some languages that emerged as standards in different fields, with some common factors: They are not compiled, they are cross-platform, easy to read and with a large community around. I can quickly think of three examples: Matlab, Python, and R.
 

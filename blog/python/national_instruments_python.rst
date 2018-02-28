@@ -1,6 +1,8 @@
 Controlling a National Instruments Card with Python
 ===================================================
 
+:header: {attach}writing-machine.jpg
+:keywords: National Instruments, DAQ, Control, NI DAQ, PyDAQmx
 :subtitle: Don't depend on Labview; learn how to control National Instruments cards directly with Python.
 :og_description: Don't depend on Labview; learn how to control National Instruments cards directly with Python.
 :date: 2018-02-21
