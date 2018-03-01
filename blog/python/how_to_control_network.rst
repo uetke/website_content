@@ -7,9 +7,9 @@ How to Control a Device Through the Network
 :header: {attach}network_cables.jpg
 :subtitle: Exchange information and trigger measurements with devices connected to separate computers
 
-In the lab it generally occurs that you have very specific devices connected to different computers. For example when you keep old PCs only because they are set up to communicate with legacy hardware. You may also have different computers when there are mobile instruments that you share among different users. In these situations it becomes very useful to be able to exchange information between your main computer and a secondary one.
+In the lab, it is common to find different computers connected to specific devices. For example,when you keep older PCs which are able to communicate with very specific hardware. You may also have different computers when there are mobile instruments that you share among different users. In these situations it becomes very useful to be able to exchange information between your main computer and a secondary one.
 
-A computer network utilizes two elements: the server and the client. The server receives the messages you send, interpret them and return values if it is asked to. The client communicates with the server, sends commands and receives data. Internet works this way: when you entered this website, you used a browser, the client, to access content on a server. Then it would make sense to use existing technologies to communicate between computers.
+A computer network utilizes two elements: a server and a client. The server receives the messages you send, interprets them and returns values if asked to. The client communicates with the server, sends commands and receives data. Internet works this way: when you entered this website, you used a browser, the client, to access content on a server. Communicating with a device connected to another computer is, therefore, not different from what we have just described. 
 
 If you look around for Python frameworks to build web applications, you will find several but two are going to stand out: `Django <https://www.djangoproject.com/>`_ and `Flask <http://flask.pocoo.org/>`_. Django is a complete package for developing web applications, but a total overkill for our purposes. Flask is slightly more barebones, but it provides all the functionality that we are looking for: to create a server that will take inbound communication and act accordingly, for example by triggering a measurement on a device.
 
@@ -48,7 +48,7 @@ So far, both the server and the client are the same device. We will see later ho
 
    [...]
 
-If you run the server file again and head your browser to ``localhost:5000`` you should see not only the string appearing on your screen, but also a print statement if you check the command line. The ``print`` function is being triggered on the server. We could use more complex functions than ``print``. For example, we could trigger a measurement on a device.
+If you run the server file again and head your browser to ``localhost:5000`` you should see not only the string appearing on your screen, but also a message will appear on the command line where the server is running. The ``print`` function is being triggered on the server. We could use more complex functions than ``print``. For example, we could trigger a measurement on a device.
 
 .. note:: If you are not dealing with instruments but you would like to trigger computer-intensive tasks on a remote computer, you can use the same approach explained here. You can then leverage computers with more memory or better processors, or you can even make a parallel execution of your code without leaving your Jupyter notebook.
 
