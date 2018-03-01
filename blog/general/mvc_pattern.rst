@@ -7,6 +7,7 @@ The MVC Pattern for Lab Projects
 :keywords: Design Pattern, MVC, Model, View, Controller
 :og_description: The Model-View-Controller design pattern can help you develop better software, quicker
 :header: {attach}model-view-controller.jpg
+:test: algo
 
 If you have ever tried to learn how to use web frameworks, you probably have encountered information about the MVC design pattern, or **Model-View-Controller**. Generally speaking, it is a set of rules on how to structure your code in order to make it more reusable and easier to maintain. Web applications normally have a specific definition for each element because they interact with a database on a server which provides data on one side and with the user on the other. Software developed for the lab is not at all different.
 
