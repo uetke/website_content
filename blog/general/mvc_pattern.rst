@@ -1,4 +1,4 @@
-    The MVC Pattern for Lab Projects
+The MVC Pattern for Lab Projects
 ================================
 
 :subtitle: The Model-View-Controller design pattern can help you develop better software, quicker
@@ -7,7 +7,7 @@
 :og_description: The Model-View-Controller design pattern can help you develop better software, quicker
 :header: {attach}model-view-controller.jpg
 
-When you develop applications for the lab, probably you want to be able to re-use parts of the code and allow other scientists to build on your work. This problem has been discussed at length around other applications, such as building web services. And in a certain way, developing a website is not completely different from controlling devices in the lab. A user requests data from a specific server (or a device in the lab), which is delivered through a web browser (or a plot if it was data). Many developers of web applications use the **Model-View-Controller** pattern, also known as `MVC`. Lab applications can also be built using the same ideas, creating more sustainable code.
+When you develop applications for the lab, probably you want to be able to re-use parts of the code and allow other scientists to build on your work. This problem has been discussed at length around other applications, such as building web services. And in a certain way, developing a website is not completely different from controlling devices in the lab. A user requests data from a specific server (or a device in the lab), which is delivered through a web browser (or a user interface). Many developers of web applications use the **Model-View-Controller** pattern, also known as `MVC`. Lab applications can also be built using the same ideas, creating more sustainable code.
 
 Generally speaking, the MVC pattern is a set of rules on how to structure your code in order to make it reusable and easy to maintain. The MVC framework, although originally developed for desktop computing, has become popular in other fields, for example for designing web applications. Web and desktop applications have specific definitions for the model, the view, and the controller. Lab applications, therefore, have to update those definitions in order to consider the different elements that make up an experiment.
 
