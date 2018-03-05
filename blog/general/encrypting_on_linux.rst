@@ -2,30 +2,30 @@ How to Encrypt an External Drive on Linux
 =========================================
 
 :subtitle: Keeping your data out of reach is an important safety measure
-:status: draft
+:og_description: Keep your data out of reach by encrypting the hard drive you use
 :date: 2018-03-05
 :keywords: safety, encryption, Linux, disk, luks
 :header: {attach}encrypt-lock-data.jpg
 
-It has probably happened to you that the data you generate in the lab does not fit on the SSD drive of your ultrabook. You soon realize that not only your scientific data takes up a lot of space, but also your personal information, such as photos and videos. You then buy an external drive, however, as soon as you move your data to the external drive you need to consider that your data becomes available to anybody who has access to it. This is perhaps not what you wish, neither for your lab data nor for your personal information. In a similar manner, when you perform a backup to an external drive, as we discussed in our previous post on `The Importance of Doing a Backup <{filename}backup.rst>`_, you are facing exactly the same problem.
+External drives are a great complement to laptops with a limited amount of memory. The data you generate in the lab may not fit on the SSD drive of your ultrabook, or you want to keep access to older information. Not only scientific data takes a lot of space, also your personal information, such as photos and videos can take up a lot of the available memory. However, as soon as you put information on an external drive, it will become available to anybody who has access to it. This is perhaps not what you wish, neither for your lab data nor for your personal information. When you perform a `backup to an external drive <{filename}backup.rst>`_ you are facing exactly the same situation.
 
-To solve it, in this post we are going to discuss how to encrypt a hard drive on Linux, focusing on Ubuntu/Debian, but other distributions should work in a very similar way. We are going to use `LUKS` for encrypting the device and therefore we need to install it:
+To solve it, in this post we are going to discuss how to encrypt a hard drive on Linux, focusing on Ubuntu/Debian, but other distributions should work in a very similar way. We are going to use `LUKS` for encrypting the device; on Ubuntu you can install it by running:
 
 .. code-block:: bash
 
    sudo apt-get install cryptsetup
 
-This is all we should do to install it; Fedora users can install it through ``yum install cryptsetup-luks``. Now, we are going to encrypt the hard drive. When doing it this warning may pop up:
+Fedora users can install it through ``yum install cryptsetup-luks``. Now, we are going to encrypt the hard drive.
 
 .. warning:: When encrypting your hard drive you will lose all the information contained in it. Be sure you are encrypting the proper partition.
 
-We assume our drive is ``/dev/sdz1``, but you should check where it is. You need to be absolutely sure that you are not encrypting your home partition or a disk with important information. You can see more information about the drives present in your computer by running:
+We assume our drive is ``/dev/sdz1``, but you should check which one is yours. You need to be absolutely sure that you are not encrypting your home partition or a disk with important information. You can see more information about the drives present in your computer by running:
 
 .. code-block:: bash
 
    ls -l /dev/disk/by-*
 
-You will see all the devices listed and ordered in different ways: by their *UUID*, *path*, etc. Check what is the partition you want to encrypt. Remember that you don't need to encrypt the entire disk, therefore you if want to have a public and a private space run:
+You will see all the devices listed and ordered in different ways: by their *UUID*, *path*, etc. Check what is the partition you want to encrypt. You don't need to encrypt the entire disk, therefore you can have a public and a private space. We run:
 
 .. code-block:: bash
 
@@ -62,7 +62,7 @@ Now we are ready to mount and use our encrypted partition. We mount it as any ot
 
    sudo mount /dev/mapper/backup /backup
 
-The first ``backup`` is the label we have assigned with the ``luksOpen`` command. The second is the mount point, ``/backup``, that has to exist before mounting, exactly in the same way as with any other device. Now you have your partition mounted and you can use it without any further concerns. If you are on Linux with a user interface, normally you can handle de decryption of the drive with the file manager. It is very straightforward, you just introduce the password when you are asked for it and you use the disk as always.
+The first ``backup`` is the label we have assigned with the ``luksOpen`` command. The second is the mount point,``/backup``, that has to exist before mounting, exactly in the same way as with any other device. Now you have your partition mounted and you can use it without any further concerns. If you are on Linux with a user interface, normally you can handle de decryption of the drive with the file manager. It is very straightforward, you just introduce the password when you are asked for it and you use the disk as always.
 
 Finally, to unmount the disk we run:
 
