@@ -7,7 +7,7 @@ How to Encrypt an External Drive on Linux
 :keywords: safety, encryption, Linux, disk, luks
 :header: {attach}encrypt-lock-data.jpg
 
-It has probably happended to you that the data you generate in the lab does not fit on the SSD drive of your ultrabook. You soon realise that not only your scientific data takes up a lot of space, but also your personal information, such as photos and videos. You then buy an external drive, however, as soon as you move your data to the external drive you need to consider that your data becomes available to anybody who has access to it. This is perhaps not what you wish, neither for your lab data nor for your personal information. In a similar manner, when you perform a backup to an external drive, as we discussed in our previous post on `The Importance of Doing a Backup <{filename}backup.rst>`_, you are facing exactly the same problem.
+It has probably happened to you that the data you generate in the lab does not fit on the SSD drive of your ultrabook. You soon realize that not only your scientific data takes up a lot of space, but also your personal information, such as photos and videos. You then buy an external drive, however, as soon as you move your data to the external drive you need to consider that your data becomes available to anybody who has access to it. This is perhaps not what you wish, neither for your lab data nor for your personal information. In a similar manner, when you perform a backup to an external drive, as we discussed in our previous post on `The Importance of Doing a Backup <{filename}backup.rst>`_, you are facing exactly the same problem.
 
 To solve it, in this post we are going to discuss how to encrypt a hard drive on Linux, focusing on Ubuntu/Debian, but other distributions should work in a very similar way. We are going to use `LUKS` for encrypting the device and therefore we need to install it:
 
@@ -127,7 +127,7 @@ Then you can change the file ``/etc/crypttab`` to point to the UUID of your devi
 
    backup      /dev/disk/by-uuid/UUID_NUMBER  /root/keyfile  luks
 
-Encrypting is an easy safety measure that we can take with all our information. It prevents strangers to read our files even if they have physical access to our devices. Just note that if you are traveling to the US, you should consider `not bringing any electronics with you <https://www.cbp.gov/newsroom/national-media-release/cbp-releases-updated-border-search-electronic-device-directive-and>`_; if you are found with an encrypted device they can ask you for your password, if you refuse you will go back to where you came from.
+Encrypting is an easy safety measure that we can take with all our information. It prevents strangers to read our files even if they have physical access to our devices. Just note that if you are traveling to the US, you should consider `not bringing any electronics with you <https://www.cbp.gov/newsroom/national-media-release/cbp-releases-updated-border-search-electronic-device-directive-and>`_; if you are found with an encrypted device they can ask you for your password, and if you refuse you will go back to where you came from.
 
 
 Header photo by `James Sutton <https://unsplash.com/photos/FqaybX9ZiOU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText>`_ on Unsplash
