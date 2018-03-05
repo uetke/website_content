@@ -3,7 +3,7 @@ How to Encrypt an External Drive on Linux
 
 :subtitle: Keeping your data out of reach is an important safety measure
 :status: draft
-:date: 2018-03-02
+:date: 2018-03-05
 :keywords: safety, encryption, Linux, disk, luks
 :header: {attach}encrypt-lock-data.jpg
 

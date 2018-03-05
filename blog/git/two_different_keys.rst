@@ -3,6 +3,8 @@ Using two different ssh keys for Github repositories
 
 :tags: Git, ssh, Key, encription
 :date: 2018-02-18
+:header: {attach}locks.jpg
+
 
 I have two different users at Github, one is my `personal account <https://github.com/aquilesC/>`_ and the other is the `Uetke account <https://github.com/uetke/>`_. In my personal account I do sometimes play with repositories that nothing have to do with my work and therefore I like keeping things separated. However ssh keys can be used in one account at a time; fortunately the solution is easier than what I would have imaged.
 
@@ -64,3 +66,5 @@ You can also add it as a remote:
    git remote add git@github.com-git2:User2/repo.git
 
 I use this to update repositories into the Uetke profile once they are ready for the public, but in the meantime I use my personal repository for myself or extremely curious people.
+
+Header photo by `Cristina Gottardi <https://unsplash.com/photos/maaWpQVgi00?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText>`_ on Unsplash

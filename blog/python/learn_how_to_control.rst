@@ -1,13 +1,12 @@
 Learn how to control your experiment with Python
 ================================================
 
+:header: {attach}computer_control.jpg
 :subtitle: Everything you ever wanted to know for programming your own software
 :tags: learning, python, experiment, instrumentation, lab
 :date: 2018-02-17
 :og_description: Programming and automating your setup with Python is easier than what you think. Learn how.
 
-.. image:: {attach}team_training.jpg
-   :alt: team training
 
 **Controlling a setup is as important as being able to build it**; however many scientists believe that writing software for setups is a titanic task that cannot be achieved in a short time. At Uetke we are committed to change this perspective by providing `courses specifically aimed at scientists working in the lab </courses>`_. Currently, we are offering two tracks, one for those who have little experience programming and one for those who already have experience and want to learn how to control their setups.
 
@@ -20,3 +19,5 @@ If you have the feeling that a computer is more of an obstacle than a tool for s
 If you are still in doubt whether Python can be a solution for your lab’s problem, I suggest you check our Portfolio to see what solutions we have already achieved. Python is gaining momentum in the scientific community, especially for data analysis. However, the instrumentation realm is still largely dominated by LabView. We believe that by showing that experiments can be effectively controlled with Python, a great synergy amongst scientists is going to be born. Python code is easy to maintain, readable and Python is itself open source. This last detail, even if largely overlooked by many research labs, is a cornerstone for data sharing and openness, a very hot topic in the years to come.
 
 The courses provided by Uetke will teach you how to control your experiment using Python. They are mostly aimed at Ph.D.’s and Postdocs of any background, but if you are a company either using or trying to switch to Python, we will be very excited to hear from you. If your lab or institute is interested in offering these courses, don’t hesitate to contact us. On top of everything, we can build a custom solution for your institution; if you want a special training, discuss it with us and we will deliver a course that not only meets but exceeds your expectations.
+
+Header photo by `Thought Catalog <https://unsplash.com/photos/505eectW54k?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText>`_ on Unsplash

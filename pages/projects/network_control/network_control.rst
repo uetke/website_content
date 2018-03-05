@@ -4,9 +4,7 @@ Network Control
 :keywords: flask, network, raspberry pi, beaglebone
 :subtitle: Control any device through the network
 :slug: projects/network-control
-
-.. image:: {attach}beaglebone-black-front.jpg
-   :alt: Photo of the Beaglebone Black from the front
+:header: {attach}beaglebone-black-front.jpg
 
 Small devices such as a **Raspberry Pi** or a **Beaglebone** come with native network capabilities, USB ports, and basic DAQ. Even if it is possible to connect a device to the network through one of these small computers, it is still not possible to control the device remotely. At Uetke we have developed a server that with a simple API is able to relay commands to any connected device.
 
