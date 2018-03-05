@@ -1,4 +1,4 @@
-The MVC Pattern for Lab Projects
+    The MVC Pattern for Lab Projects
 ================================
 
 :subtitle: The Model-View-Controller design pattern can help you develop better software, quicker
