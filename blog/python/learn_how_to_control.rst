@@ -6,7 +6,7 @@ Learn how to control your experiment with Python
 :tags: learning, python, experiment, instrumentation, lab
 :date: 2018-02-17
 :og_description: Programming and automating your setup with Python is easier than what you think. Learn how.
-
+:author: Aquiles Carattino
 
 **Controlling a setup is as important as being able to build it**; however many scientists believe that writing software for setups is a titanic task that cannot be achieved in a short time. At Uetke we are committed to change this perspective by providing `courses specifically aimed at scientists working in the lab </courses>`_. Currently, we are offering two tracks, one for those who have little experience programming and one for those who already have experience and want to learn how to control their setups.
 

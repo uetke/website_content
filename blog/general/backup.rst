@@ -5,6 +5,7 @@ The Importance of Doing a Backup
 :og_description: Back ups are a solution to the most common problems with computers; however almost everybody fails to do them.
 :header: {attach}external_drive.jpg
 :date: 2018-02-19
+:author: Aquiles Carattino
 
 The ransomware attacks that occurred some months ago triggered a wave of people concerned about backups, finally! Ransomware attacks encrypted entire hard drives and the only way of recovering the data was by paying money to the hackers. This kind of attack is simply bypassed by a good back up policy, that enables to recover the system in a short period of time.
 

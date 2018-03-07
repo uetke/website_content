@@ -5,6 +5,7 @@ Uetke's website is on Github
 :date: 2018-02-26
 :og_description: Uetke's website is built with Python, Pelican, static files, and is available on Github
 :header: {attach}website_analytics.jpg
+:author: Aquiles Carattino
 
 At Uetke we seek to build simple, clear, modular and extensible codes that can be easily maintained and repurposed by developers other than their creators. Therefore we decided to make all the under-the-hood code freely available for others to read, learn, and improve. The code is hosted on Github in two different repositories: `the content <https://github.com/uetke/website_content>`_  and the `style files <https://github.com/uetke/website>`_. Uetke is built on Pelican, a Python generator of static websites, you can find the plain files in the content and the template and configuration files in the style files.
 

@@ -5,6 +5,7 @@ Should Labs Move to Open Source?
 :header: {attach}sorry_we_are_closed.jpg
 :date: 2018-02-18
 :og_description: Why and how can labs move their projects to Open Source? The tools are there; it is interest that is missing.
+:author: Aquiles Carattino
 
 We can agree that researchers exchange published papers as a currency, and its value is the number of citations each has. Accessing conferences, faculty positions and grants is to a great extent achieved on the basis of researchers' success history. However, publishing software is not counted towards a scientist's productivity, regardless of how many scientists are benefiting from it. Therefore there is no official incentive in publishing software and much less as open source; therefore it has to be a policy established from top to bottom, from management to Ph.D. candidates.
 

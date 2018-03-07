@@ -6,6 +6,7 @@ How to Encrypt an External Drive on Linux
 :date: 2018-03-05
 :keywords: safety, encryption, Linux, disk, luks
 :header: {attach}encrypt-lock-data.jpg
+:author: Aquiles Carattino
 
 External drives are a great complement to laptops with a limited amount of memory. The data you generate in the lab may not fit on the SSD drive of your ultrabook, or you want to keep access to older information. Not only scientific data takes a lot of space, also your personal information, such as photos and videos can take up a lot of the available memory. However, as soon as you put information on an external drive, it will become available to anybody who has access to it. This is perhaps not what you wish, neither for your lab data nor for your personal information. When you perform a `backup to an external drive <{filename}backup.rst>`_ you are facing exactly the same situation.
 

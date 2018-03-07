@@ -5,7 +5,7 @@ How to Write a Driver with Lantz
 :date: 2018-02-23
 :og_description: Writing your own drivers is easy thanks to Lantz, a Python package that handles different communication standards, limits, and even units.
 :header: {attach}toolbox.jpg
-
+:author: Aquiles Carattino
 
 Lantz is a package written by several researchers who wanted to have a framework to build instrumentation on Python. It is open source and hosted `on Github <https://github.com/LabPy/lantz>`_. Their description is very clear:
 

@@ -6,6 +6,7 @@ How to Control a Device Through the Network
 :keywords: Network, Communication, Async, Remote Control, Devices, Drivers, Flask, Internet
 :header: {attach}network_cables.jpg
 :subtitle: Exchange information and trigger measurements with devices connected to separate computers
+:author: Aquiles Carattino
 
 In the lab, it is common to find different computers connected to specific devices. For example,when you keep older PCs which are able to communicate with very specific hardware. You may also have different computers when there are mobile instruments that you share among different users. In these situations it becomes very useful to be able to exchange information between your main computer and a secondary one.
 

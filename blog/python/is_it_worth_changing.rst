@@ -6,6 +6,7 @@ Is it worth for companies to switch to Python?
 :tags: companies, open source, resources
 :date: 2018-02-16
 :og_description: Companies could start listening to their customers and start providing support for popular languages such as Python
+:author: Aquiles Carattino
 
 It is a very fair question that has popped up several times while explaining what Uetke is trying to achieve. Is it worth switching to Python when most instrumentation is done with LabView? To address this question, there are several things to consider, such as who is actually building the instrumentation for a particular setup, who is using it and which devices are available.
 
