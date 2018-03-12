@@ -19,10 +19,19 @@ def timing_average(func):
       t0 = time.time()
       res = func(x, y)
       t1 = time.time()
-      print("It took {} seconds to calculate the average".format(t1-t0))
+      print("It took {} seconds for {} to calculate the average".format(t1-t0, func.__name__))
       return res
 
    return wrapper
 
 new = timing_average(average)
 new(2, 4)
+
+#### Syntactic Sugar ####
+
+@timing_average
+def new_average(x, y):
+    return (x+y)/2
+
+
+new_average(3, 5)
