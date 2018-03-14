@@ -1,13 +1,14 @@
 Agile Development for Science
 =============================
 
-:status: draft
-:date: 2018-03-08
+:date: 2018-03-14
 :header: {attach}agile.jpg
-:subtitle: Scientific work can also benefit from principles derived for software development
+:subtitle: Scientific work can also benefit from principles derived from software development
 :tags: Agile, Development, Experimental, Science, Process, Principles
 :og_description: How can lab managers and researchers benefit from Agile processes.
 :author: Aquiles Carattino
+
+Managing research projects and teams can benefit from the methodologies and processes developed in other fields of management. In recent decades, software development became a major industry that needed to establish its own set of rules and procedures. People working in the software industry and young scientists such as Ph.D. candidates and postdocs share a lot of qualities and interests. Therefore, it can be useful to check what the software industry has developed in terms of management and see what procedures can be extrapolated to the scientific environment.
 
 The Agile software development describes a particular approach to software development methodology based on iterative development. Its core value is that requirements and solutions evolve through a collaborative process between developers and customers. The principles of the Agile methodology are summarized in four statements in its `manifesto <http://agilemanifesto.org/>`_. They are:
 
@@ -16,7 +17,7 @@ The Agile software development describes a particular approach to software devel
    * **Customer collaboration** over contract negotiation
    * **Responding to change** over following a plan
 
-Agile in itself doesn't establish any particulars regarding programming, but just how to develop a workflow and a working environment. In the last few years, Agile has attracted a lot of attention, extending its concepts away from software development, and moving into project management. Even though the core principles were drawn from a programming context, scientific projects could also benefit from the Agile ideas, but with some reservations.
+Agile in itself doesn't establish any particulars regarding programming but just how to develop a workflow and a working environment. In the last few years, Agile has attracted a lot of attention, extending its concepts away from software development, and moving into project management. Even though the core principles were drawn from a programming context, scientific projects could also benefit from the Agile ideas, but with some reservations.
 
 Some of the main points of an Agile process, such as *responding to change over following a plan* are a routine reality in a lab. Plans are hard to follow because a researcher cannot be sure of what lays ahead. More interesting questions arise or some things just don't work as expected. Being flexible to overcome obstacles and to change focus when more important questions can be answered, is a needed attribute of successful researchers.
 
@@ -38,6 +39,6 @@ The Agile manifesto provides not only the four values stated at the beginning bu
    * Simplicity --the art of maximizing the amount of work not done-- is essential.
    * At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.
 
-The Agile manifesto cannot be extrapolated directly to scientific work, but nonetheless it can provide a good source of inspiration. It may be time to develop a manifesto for research, that can be used as a guide for lab managers seeking advice on how to improve the working conditions at their labs.
+The Agile manifesto cannot be extrapolated directly to scientific work but nonetheless, it can provide a good source of inspiration. It may be time to develop a manifesto for research, that can be used as a guide for lab managers seeking advice on how to improve the working conditions at their labs.
 
 Header photo by `Giu Vicente <https://unsplash.com/photos/c7Ev87qEkRc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText>`_ on Unsplash
