@@ -8,11 +8,11 @@ How to use HDF5 files in Python
 :header: {attach}compartments.jpg
 :og_description: Learn how to use the HDF5 format to store large amounts of data and read it back with Python
 
-When dealing with large amounts of data, both in the lab or as result of simulations, saving to text files is not going to work. Sometimes you need to access a very specific subset of data and you want to do it fast. The HDF5 format solves both issues thanks to a very optimized underlying library. It is broadly used in scientific environments and has a great implementation in Python, designed to work with numpy out of the box.
+When dealing with large amounts of data, either experimental from the lab or simulated data, saving it to several text files is not very efficient, if it occurs that later you need to access a very specific subset of the data and you want to do it fast. In these situations the HDF5 format solves both issues thanks to a very optimized underlying library. HDF5 is broadly used in scientific environments and has a great implementation in Python, designed to work with numpy out of the box.
 
-The HDF5 format in principle supports files of any size, each file has an internal structure that allows you to search for the specific data set that you want. You can think about it as a single file that has within it a hierarchical structure, just like a collection of folders and subfolders. The data is stored in binary format and the library is compatible with different data types. Moreover, you can attach metadata to every element in the structure, making it ideal for generating self-contained files.
+The HDF5 format in principle supports files of any size, each file has an internal structure that allows you to search for a specific data set. You can think about it as a single file that has within it a hierarchical structure, just like a collection of folders and subfolders. The data is stored in binary format and the library is compatible with different data types. Moreover, you can attach metadata to every element in the structure, making it ideal for generating self-contained files.
 
-The most interesting feature of the h5py package is that data is read from the file only when it is needed. Imagine you have a very large array that doesn't fit in your available memory. You could have generated the array, for example, in a computer with different specifications than the one you are using to analyze the data. The HDF5 format allows you to choose which elements of the array to read with a syntax equivalent to numpy. This will allow you to use data stored on a hard drive instead of in the RAM memory without much modifications to your existent code.
+The most interesting feature of the h5py package is that data is read from the file only when it is needed. Imagine you have a very large array that doesn't fit in your available RAM memory. You could have generated the array, for example, in a computer with different specifications than the one you are using to analyze the data. The HDF5 format allows you to choose which elements of the array to read with a syntax equivalent to numpy. You can then work with the data stored on a hard drive rather than in the RAM memory without much modifications to your existent code.
 
 In this article, we are going to see how you can use h5py to store and retrieve data from a hard drive. We are going to discuss different ways of storing data and how to optimize the reading process. All the examples that appear in this article are also `available on our Github repository <https://github.com/uetke/website_content/tree/master/example_code/HDF_Examples>`_.
 
@@ -27,7 +27,7 @@ The HDF5 format is supported by the `HDF Group <https://www.hdfgroup.org/>`_, it
 
 the command will also install numpy in case you don't have it already in your environment.
 
-If you are looking for a graphical tool to explore the contents of your HDF5 files, you should install `HDF5 Viewer <https://support.hdfgroup.org/products/java/hdfview/>`_. It is written in Java so it should work almost in any computer.
+If you are looking for a graphical tool to explore the contents of your HDF5 files, you should install `HDF5 Viewer <https://support.hdfgroup.org/products/java/hdfview/>`_. It is written in Java so it should work in almost any computer.
 
 Basic Saving and Reading Data
 *****************************
@@ -47,7 +47,7 @@ The first few lines are quite straightforward, we import the packages h5py and n
 
 .. note:: If you are not familiar with the ``with`` statement, I shall say that it is a convenient way of opening and closing a file. Even if there is an error within the ``with``, the file is going to be closed. If for some reason you don't use the ``with``, never forget to add the command ``f.close()`` at the end. Is the only way of ensuring that all data was actually written before closing the program.
 
-To read the data back, we can do it in a very similar way to what you would do if you want to read a numpy file:
+To read the data back, we can do it in a very similar way as when reading a numpy file:
 
 .. code-block:: python
 
@@ -64,9 +64,9 @@ We open the file with a read attribute, ``r`` , and we recover the data by direc
    for key in f.keys():
       print(key)
 
-Once you have read the data set that you want, you can do with it whatever you want, for example, displaying the maximum and minimum values in the array or selecting the first 15 values of it. These simple examples, however, are hiding a lot of the things that happen under the hood.
+Once you have read the data set that you want, you can check it by for example displaying the maximum and minimum values in the array, or selecting the first 15 values of it. These simple examples, however, are hiding a lot of the things that happen under the hood.
 
-In the example above, you can use ``data`` as an array. You can, for example, address the third element by typing ``data[2]``, our you could get a range of values with ``data[1:3]``. However, data is not an array but a dataset. You can see it by adding ``print(type(data))``. Datasets work in a completely different way than arrays because their information is stored on the hard drive and they don't load to RAM until we don't use them. The following code, for example, will not work:
+In the example above, you can use ``data`` as an array. You can, for example, address the third element by typing ``data[2]``, or you could get a range of values with ``data[1:3]``. Note that ``data`` is not an array but a dataset. You can see it by typing ``print(type(data))``. Datasets work in a completely different way than arrays, because their information is stored on the hard drive and they don't load it to RAM memory if we don't use it. The following code, for example, will not work:
 
 .. code-block:: python
 
@@ -81,7 +81,7 @@ The error that appears is a bit lengthy, but the last line is very helpful:
 
    ValueError: Not a dataset (not a dataset)
 
-It means that we are trying to access a dataset to which we have no longer access. It is confusing, but because we closed the file, we are no longer allowed to access the second value in data. When we assigned ``f['default']`` to the variable ``data`` we are not actually reading anything from the file, we are just generating a pointer to where the data is located on the hard drive. However, this code will work:
+The error means that we are trying to access a dataset to which we have no longer access. It is a bit confusing, but this occurs because we closed the file, so we are no longer allowed to access the second value in data. When we assigned ``f['default']`` to the variable ``data`` we are not actually reading anything from the file, we are just generating a pointer to where the data is located on the hard drive. However, this code will work:
 
 .. code-block:: python
 
@@ -94,7 +94,7 @@ If you pay attention, the only difference is that we added ``[:]`` after reading
 
 Selective Reading from HDF5 files
 *********************************
-Depending on the type of user you are, probably the first advantage that you will notice when using HDF5 files is when you are reading data. We have seen that when you read a dataset you are not yet reading data from the disk, you are just creating a link to a specific location on the hard drive. We can see what happens if, for example, we explicitly read the first 10 elements of a dataset:
+So far we have seen that when we read a dataset we are not yet reading data from the disk, instead we are creating a link to a specific location on the hard drive. We can see what happens if, for example, we explicitly read the first 10 elements of a dataset:
 
 .. code-block:: python
    :hl_lines: 2
@@ -106,7 +106,7 @@ Depending on the type of user you are, probably the first advantage that you wil
    print(data[1])
    print(data_set[1])
 
-We are splitting the code into different lines to make it more explicit, but you can be more synthetic in your projects. We read the file, and we read the `default` dataset. We assign the first 10 elements of the dataset to a variable called ``data``. After the file closes (when the ``with`` finishes), we can access the values stored in ``data``, but ``data_set`` will give an error. The moment when we are actually reading from the disk is when we explicitly access the first 10 elements of the data set. If you print the type of ``data`` and of ``data_set`` you will see that they are actually different. The first is a numpy array while the second is an h5py DataSet.
+We are splitting the code into different lines to make it more explicit, but you can be more synthetic in your projects. In the lines above we first read the file, and we then read the `default` dataset. We assign the first 10 elements of the dataset to a variable called ``data``. After the file closes (when the ``with`` finishes), we can access the values stored in ``data``, but ``data_set`` will give an error. Note that we are only reading from the disk when we explicitly access the first 10 elements of the data set. If you print the type of ``data`` and of ``data_set`` you will see that they are actually different. The first is a numpy array while the second is an h5py DataSet.
 
 The same behavior works in more complex scenarios. Let's create a new file, this time with two data sets, and let's select the elements of one based on the elements of the other. Let's start by creating a new file and storing data; that part is the easiest one:
 
@@ -158,13 +158,13 @@ The first dataset, ``d1`` is completely loaded into memory when we do ``d1[:]``,
 
    print('The length of data with a for loop: {}'.format(len(data)))
 
-Of course, there are efficiency concerns regarding reading element by element and appending to a list, but it is a very good example of one of the greatest advantages of using HDF5 over text or numpy files. Within the loop, we are loading into memory only one element. In our example, each element is just a number, but it could have been anything, from a text to an image or a video.
+Of course, there are efficiency concerns regarding reading an array element by element and appending it to a list, but it is a very good example of one of the greatest advantages of using HDF5 over text or numpy files. Within the loop, we are loading into memory only one element. In our example, each element is just a number, but it could have been anything, from a text to an image or a video.
 
 As always, depending on your application, you will have to decide if you want to read the entire array into memory or not. Sometimes you run simulations on a specific computer with loads of memory, but you don't have the same specifications in your laptop and you are forced to read chunks of your data. Remember that reading from a hard drive is relatively slow, especially if you are using HDD instead of SDD disks or even more if you are reading from a network drive.
 
 Selective Writing to HDF5 Files
 *******************************
-So far we have always appended data to a data set as soon as this was created. For many applications, however, you need to save data while it is being generated. HDF5 allows you to save data in a very similar way to how you read it back. Let's see how to create an empty `dataset` and add some data to it.
+In the examples above we have appended data to a data set as soon as this was created. For many applications, however, you need to save data while it is being generated. HDF5 allows you to save data in a very similar way to how you read it back. Let's see how to create an empty `dataset` and add some data to it.
 
 .. code-block:: python
 
@@ -174,7 +174,7 @@ So far we have always appended data to a data set as soon as this was created. F
       dset = f.create_dataset("default", (1000,))
       dset[10:20] = arr[50:60]
 
-The first couple lines are the same as before, with the exception of the ``create_dataset``. We don't append data when creating it, we just create an empty dataset able to hold up to 1000 elements. With the same logic as before, when we read specific elements from the dataset, we are actually writing to disk when we assign values to specific elements of the ``dset`` variable. In the example above we are assigning values just to a subset of the array, the indexes from 10 to 19.
+The first couple of lines are the same as before, with the exception of ``create_dataset``. We don't append data when creating it, we just create an empty dataset able to hold up to 1000 elements. With the same logic as before, when we read specific elements from the dataset, we are actually writing to disk only when we assign values to specific elements of the ``dset`` variable. In the example above we are assigning values just to a subset of the array, the indexes 10 to 19.
 
 .. warning:: It is not entirely true that you write to disk when you assign values to a dataset. The precise moment depends on several factors, including the state of the operating system. If the program closes too early, it may happen that not everything was written. It is very important to always use the ``close()`` method, and in case you write in stages, you can also use ``flush()`` in order to force the writing. Using ``with`` prevents a lot of writing issues.
 
@@ -188,7 +188,7 @@ If you read the file back and print the first 20 values of the dataset, you will
       dset = f.create_dataset("default", (1000,))
       dset = arr
 
-This mistake always gives a lot of issues, because you won't realize that you are not saving anything until you try to read it back, and it may be too late, perhaps you lost all your data. The problem here is that you are not specifying where do you want to store the data, you are just overwriting the ``dset`` variable with a numpy array. Since both the dataset and the array have the same length, you should have used ``dset[:] = arr``. This mistake will happen more often than you think, and since it is technically not wrong, you won't see any errors, but your data will be just zeros.
+This mistake always gives a lot of issues, because you won't realize that you are not saving anything until you try to read it back. The problem here is that you are not specifying where you want to store the data, you are just overwriting the ``dset`` variable with a numpy array. Since both the dataset and the array have the same length, you should have used ``dset[:] = arr``. This mistake happens more often than you think, and since it is technically not wrong, you won't see any errors, but your data will be just zeros.
 
 So far we have always worked with 1-dimensional arrays but we are not limited to them. For example, let's assume we want to use a 2D array, we can simply do:
 
@@ -206,7 +206,7 @@ which will allow us to store data in a 500x1024 array. To use the dataset, we ca
 
 Specify Data Types to Optimize Space
 ************************************
-So far, we have covered only the tip of the iceberg of what HDF5 has to offer. Besides to the length of the data you want to store, you may want to specify the type of data in order to optimize the space and speed to save and read. The `h5py documentation <http://docs.h5py.org/en/latest/faq.html>`_ provides a list of all the supported types, but we are going to show here just a couple of them. We are also going to work with several datasets in the same file, at the same time.
+So far, we have covered only the tip of the iceberg of what HDF5 has to offer. Besides the length of the data you want to store, you may want to specify the type of data in order to optimize the space. The `h5py documentation <http://docs.h5py.org/en/latest/faq.html>`_ provides a list of all the supported types, here we are going to show just a couple of them. We are going to work with several datasets in the same file at the same time.
 
 .. code-block:: python
 
@@ -219,9 +219,9 @@ So far, we have covered only the tip of the iceberg of what HDF5 has to offer. B
       dset_int_8[0] = 1200.1
       dset_complex[0] = 3 + 4j
 
-In the example above, we have created three different datasets, each with a different type. Integers of 1 byte, integers of 8 bytes and complex numbers of 16 bytes. We are storing only one number, even if our datasets can hold up to 10 elements. You can read the values back and see was actually stored. The two things to note are that the integer of 1 byte should have been rounded to 127 (instead of 1200) and the integer of 8 bytes should have been rounded to 1200 (instead of 1200.1).
+In the example above, we have created three different datasets, each with a different type. Integers of 1 byte, integers of 8 bytes and complex numbers of 16 bytes. We are storing only one number, even if our datasets can hold up to 10 elements. You can read the values back and see what was actually stored. The two things to note here are that the integer of 1 byte should have been rounded to 127 (instead of 1200), and the integer of 8 bytes should have been rounded to 1200 (instead of 1200.1).
 
-Depending on your background, perhaps you haven't thought before what is the impact that specifying datatypes may have and what do they mean. The important thing to remember is that the number of bytes tells you how many different numbers you can store. If you use 1 byte, you have 8 bits and therefore you can store 2^8 different numbers. Because you can have positive and negative values and you count also the 0, when you use integers of 1 byte you can store values from -128 to 127, in total they are 2^8 possible numbers.
+If you haven't thought before about the impact that specifying datatypes may have and what they mean. The important thing to remember is that the number of bytes tells you how many different numbers you can store. If you use 1 byte, you have 8 bits and therefore you can store 2^8 different numbers. In this case you should count positive and negative values as well as 0, then when you use integers of 1 byte you can store values from -128 to 127, in total they are 2^8 possible numbers.
 
 The number of bytes your data uses also has an impact on its size, so let's see how this works with a simple example. Let's create three files, each with one dataset for 100000 elements but with different data types. We will store the same data to them and then we can compare their sizes. We create a random array to assign to each dataset in order to fill the memory. Remember that data will be converted to the format specified in the dataset.
 
@@ -254,15 +254,15 @@ integer_8 802144
 float     1602144
 ========= ========
 
-The impact in size is quite obvious. When you go from 1 byte to 8 bytes the size of the file increases 8-fold, and when you go to 16 bytes it takes approximately 16 times more space. The space it takes to store data is not the only important factor to take into account, you also have to consider the time it takes to write the data to disk. The more you have to write, the longer it will take. Depending on your application it may be crucial to use the specific type that describes your data. In the lab, it may happen that you need to write to disk while you acquire and you need to optimize the procedure as much as possible in order not to run out of memory.
+The impact in size is quite obvious. When you go from 1 byte to 8 bytes the size of the file increases 8-fold, similarly when you go to 16 bytes it takes approximately 16 times more space. The space HDF5 takes to store your data is not the only important factor to take into account, you should also consider the time it takes to write the data to disk. The more you have to write, the longer it will take. Depending on your application it may be crucial to use the specific type that describes your data. In the lab, it may happen that you need to write to disk while you acquire the data, and you need to optimize the procedure as much as possible in order not to run out of memory.
 
-If you use the wrong data type, you may also start losing information. For example, if you have integers of 8 bytes and you store them as integers of 1 byte, their values are going to be trimmed. When working in the lab, it is very common to have devices that produce different types of data. Some DAQ cards are 16 bits, some cameras work with 8 bits but some can work with 24. Paying attention to data types is important, but is also something that Python developers may not take into account because you never have to explicitly declare a type.
+Note that if you use the wrong data type, you may also lose information! For example, if you have integers of 8 bytes and you store them as integers of 1 byte, their values are going to be trimmed. When working in the lab, it is very common to have devices that produce different types of data. Some DAQ cards have 16 bits, some cameras work with 8 bits but some can work with 24. Paying attention to data types is important, but is also something that Python developers may not take into account because you never have to explicitly declare a type.
 
 It is also interesting to remember that when you initialize an array with numpy it will default to float 8 bytes (64 bits) per element. This may be a problem if, for example, you initialize an array with zeros to hold data that is going to be only 2 bytes. The type of the array itself is not going to change, and if you save the data when creating the dataset (adding ``data=my_array``) it will default to the format ``'f8'``, which is the one the array has but not your data.
 
 Compressing Data
 ****************
-When saving data, you may opt for compressing it using different algorithms. The package h5py supports some compression filters such as `GZIP`, `LZF`, and `SZIP`. When using one of the compression filters, data will be processed on its way to the disk and it will be decompressed when reading it. Therefore, there is no change in how the code works downstream. We can repeat the same experiment, storing different data types, but using a compression filter. Our code looks like this:
+When saving data, you may opt for compressing it using different algorithms. The package h5py supports a few compression filters such as `GZIP`, `LZF`, and `SZIP`. When using one of the compression filters, the data will be processed on its way to the disk and it will be decompressed when reading it. Therefore, there is no change in how the code works downstream. We can repeat the same experiment, storing different data types, but using a compression filter. Our code looks like this:
 
 .. code-block:: python
 
@@ -317,9 +317,9 @@ When you are working on an experiment, it may be impossible to know how big your
        print(dset[99])
        print(dset[199])
 
-first, you create a dataset to store 100 values and establish a maximum size of up to 500 values. After you store the first batch of values, you can expand the dataset to store the following 100. You can repeat the procedure up to a dataset with 500 values. The same holds true for arrays with different shapes, any dimension of an N-dimensional matrix can be resized. You can check that the data is was properly stored by reading back the file and printing two elements to the command line.
+First, you create a dataset to store 100 values and set a maximum size of up to 500 values. After you store the first batch of values, you can expand the dataset to store the following 100. You can repeat the procedure up to a dataset with 500 values. The same holds true for arrays with different shapes, any dimension of an N-dimensional matrix can be resized. You can check that the data was properly stored by reading back the file and printing two elements to the command line.
 
-You can also resize the dataset at a later stage when you are reading the file. For example, you can achieve it like this:
+You can also resize the dataset at a later stage, when you are reading the file. For example, you can achieve it like this:
 
 .. code-block:: python
 
@@ -337,7 +337,7 @@ You can also resize the dataset at a later stage when you are reading the file. 
 
 In the example above you can see that we are opening the dataset, modifying its first 200 values, and appending new values to the elements in the position 200 to 299. Reading back the file and printing some values proves that it worked as expected.
 
-Imagine you are acquiring a movie but you don't know how long it would be. An image can be thought as a 2D array and a movie is nothing more than stacking several 2D arrays. Therefore, to store movies we have to define a 3-dimensional array in our HDF file, but we don't want to set a maximum duration, therefore the third axis of our dataset shouldn't have a fixed maximum. This is done like so:
+Imagine you are acquiring a movie but you don't know how long it will be. An image can be thought as a 2D array and a movie is nothing more than stacking several 2D arrays. Therefore, to store movies we have to define a 3-dimensional array in our HDF file, but we don't want to set a maximum duration, therefore the third axis of our dataset shouldn't have a fixed maximum. This is done as follows:
 
 .. code-block:: python
 
@@ -359,7 +359,7 @@ To optimize the storing of data you can opt to do it in chunks. Each chunk will 
 
 The command means that all the data in ``dset[0:100,0:100]`` will be stored together. It is also true for ``dset[200:300, 200:300]``, ``dset[100:200, 400:500]``, etc. According to h5py, there are some performance implications while using `chunks`:
 
-   Chunking has performance implications. It’s recommended to keep the total size of your chunks between 10 KiB and 1 MiB, larger for larger datasets. Also keep in mind that when any element in a chunk is accessed, the entire chunk is read from disk.
+    Chunking has performance implications. It is recommended to keep the total size of your chunks between 10 KiB and 1 MiB, larger for larger datasets. Also keep in mind that when any element in a chunk is accessed, the entire chunk is read from disk.
 
 There is also the possibility of enabling auto-chunking, that will take care of selecting the best size automatically. Auto-chunking is enabled by default if you use compression or ``maxshape``. You enable it explicitly by doing:
 
@@ -369,7 +369,7 @@ There is also the possibility of enabling auto-chunking, that will take care of 
 
 Organizing Data with Groups
 ***************************
-We have seen a lot of different ways of storing and reading data. Now we have to cover one of the last important topics of HDF5 that is how to organize the information into a file. Datasets can be placed inside `groups`, that behave in a similar way to how directories behave. We can create a group first and then add a dataset to it:
+We have seen a lot of different ways of storing and reading data. Now we have to cover one of the last important topics of HDF5 that is how to organize the information in a file. Datasets can be placed inside `groups`, that behave in a similar way to how directories do. We can create a group first and then add a dataset to it:
 
 .. code-block:: python
 
@@ -413,7 +413,7 @@ However, when you have nested groups, you will also need to start nesting for-lo
    with h5py.File('groups.hdf5', 'r') as f:
       f.visit(get_all)
 
-Notice that we define a function ``get_all`` that takes one argument, ``name``. When we use the ``visit`` method, it takes as an argument a function like ``get_all``. ``visit`` will go through each element and while the function doesn't return a value other than None it will keep iterating. For example, imagine we are looking for an element called `Sub_Group` we have to change ``get_all``:
+Notice that we define a function ``get_all`` that takes one argument, ``name``. When we use the ``visit`` method, it takes as argument a function like ``get_all``. ``visit`` will go through each element and while the function doesn't return a value other than None, it will keep iterating. For example, imagine we are looking for an element called `Sub_Group` we have to change ``get_all``:
 
 .. code-block:: python
 
@@ -446,11 +446,11 @@ And you can work as explained earlier with groups. A second approach is to use a
       data = group['default']
       print('First data element: {}'.format(data[0]))
 
-The main difference when using ``visititems`` is that we have access not only to the name of the object that is being analyzed but also to the object itself.
+The main difference when using ``visititems`` is that we have accessed not only the name of the object that is being analyzed, but also the object itself.
 
 Storing Metadata in HDF5
 ************************
-One of the aspects that are often overlooked with HDF5 is that it comes prepared to store metadata attached to any group or dataset. Metadata is crucial in order to understand, for example, where the data came from, what were the parameters used for a measurement or a simulation, etc. Metadata is what makes a file self-descriptive. Imagine you open older data and you find a 200x300x250 matrix. You know it is a movie, but you have no idea which dimension is time, nor the timestep between frames.
+One of the aspects that are often overlooked in HDF5 is that it designed to store metadata attached to any group or dataset. Metadata is crucial in order to understand, for example, where the data came from, what were the parameters used for a measurement or a simulation, etc. Metadata is what makes a file self-descriptive. Imagine you open older data and you find a 200x300x250 matrix. You know it is a movie, but you have no idea which dimension is time, nor the timestep between frames.
 
 Storing metadata into an HDF5 file can be achieved in different ways. The official one is by adding attributes to groups and datasets.
 
@@ -525,10 +525,10 @@ When you use `json` to encode data you are defining a specific format. You could
 
 Final thoughts on HDF5
 **********************
-In many applications, text files are more than enough and provide a simple way to store data and share it with other researchers. However, as soon as the volume of information starts increasing you, need to look for tools that are better suited than text files. One of the main advantages of the HDF format is that it is self-contained, meaning that the file itself has all the information you need to read it, including metadata information to allow you to reproduce results. Moreover, the HDF format is supported in different operating systems and programming languages.
+In many applications, text files are more than enough and provide a simple way to store data and share it with other researchers. However, as soon as the volume of information increases, you need to look for tools that are better suited than text files. One of the main advantages of the HDF format is that it is self-contained, meaning that the file itself has all the information you need to read it, including metadata information to allow you to reproduce results. Moreover, the HDF format is supported in different operating systems and programming languages.
 
 HDF5 files are complex and allow you to store a lot of information in them. The main advantage over databases is that they are stand-alone files that can be easily shared. Databases need an entire system to manage them, they can't be easily shared, etc. If you are used to working with SQL, you should check `the HDFql project <https://www.hdfgroup.org/2016/06/hdfql-new-hdf-tool-speaks-sql/>`_ which allows you to use SQL to parse data from an HDF5 file.
 
 Storing a lot of data into the same file is susceptible to corruption. If your file loses its integrity, for example, because of a faulty hard drive, it is hard to predict how much data is going to be lost. If you store years of measurements into one single file, you are exposing yourself to unnecessary risks. Moreover, backing up is going to become cumbersome because you won't be able to do incremental backups.
 
-HDF5 is a format that has a long history and that many researchers use. It takes a bit of time to get used to, and you will need to experiment for a while until you find a way in which it can help you to store your data. HDF5 is a good format if you need to establish transversal rules in your lab on how to store data and metadata.
+HDF5 is a format that has a long history and that many researchers use. It takes a bit of time to get used to, and you will need to experiment for a while until you find a way in which it can help you store your data. HDF5 is a good format if you need to establish transversal rules in your lab on how to store data and metadata.
