@@ -7,6 +7,7 @@ Virtual Environment is a Must-Have Tool
 :subtitle: Isolate different development environments from each other to avoid overlaps
 :header: {attach}compartments.jpg
 :og_description: Create different programming environments for different projects and avoid conflicts
+:tags: Python, Virtual Environment, Development, Tricks, Tools
 
 When you start developing software, it is of utmost importance to have an isolated programming environment in which you can control precisely the packages installed. This will allow you, for example, to use experimental libraries without overwriting software that other programs use in your computer. Isolated environments allow you, for example, to update a package only within that specific environment, without altering the dependencies in every other development you are doing.
 

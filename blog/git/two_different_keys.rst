@@ -1,7 +1,7 @@
 Using two different ssh keys for Github repositories
 ====================================================
 
-:tags: Git, ssh, Key, encription
+:tags: Git, ssh, Key, encryption, security, development
 :date: 2018-02-18
 :keywords: Git, Github, Repositories, Version Control
 :og_description: Learn how to use two different keys from the same computer on Github

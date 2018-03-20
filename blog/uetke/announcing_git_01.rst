@@ -7,6 +7,7 @@ New Courses of Git for Scientists
 :slug: announcing-new-git-for-scientists-courses
 :date: 2018-02-22
 :author: Aquiles Carattino
+:tags: Git, Uetke, Course, Training, Learning
 
 We are launching the course *Git for Scientists* aimed at researchers from different backgrounds and career stages. In the course, you will learn how to work with git, one of the best version control system of all times, and its different web implementations such as BitBucket, GitHub, and GitLab.
 

@@ -1,7 +1,7 @@
 Should Labs Move to Open Source?
 ================================
 
-:tags: Open Source
+:tags: Open Source, Open, Software, Packages, Programs, Open Science, Science, Labs
 :header: {attach}sorry_we_are_closed.jpg
 :date: 2018-02-18
 :og_description: Why and how can labs move their projects to Open Source? The tools are there; it is interest that is missing.

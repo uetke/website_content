@@ -6,6 +6,7 @@ Some Open Source Projects Worth Checking
 :date: 2018-02-27
 :header: {attach}science_cern.jpg
 :author: Aquiles Carattino
+:tags: Open Source, Programs, Projects, Open Science, Development
 
 In a previous post we discussed if it was worth `moving projects to the open source community <{filename}../open-source/should_labs_move_to_open_source.rst>`_ and we concluded that both institutions and individuals can benefit from a growing community of developers. Therefore we believe in the importance of showing some of the available projects to give users an idea of what can be achieved. Not all projects are equally mature, but they are all a great starting point for further development.
 

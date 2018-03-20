@@ -5,6 +5,7 @@ How to use HDF5 files in Python
 :author: Aquiles Carattino
 :subtitle: HDF5 allows you to store large amounts of data efficiently
 :header: {attach}storage.jpg
+:tags: HDF5, Python, Data, Data Storage, h5py
 :og_description: Learn how to use the HDF5 format to store large amounts of data and read it back with Python
 
 When dealing with large amounts of data, either experimental or simulated, saving it to several text files is not very efficient.  Sometimes you need to access a very specific subset of data and you want to do it fast. In these situations, the HDF5 format solves both issues thanks to a very optimized underlying library. HDF5 is broadly used in scientific environments and has a great implementation in Python, designed to work with numpy out of the box.
@@ -201,6 +202,7 @@ which will allow us to store data in a 500x1024 array. To use the dataset, we ca
    dset[1,2] = 1
    dset[200:500, 500:1024] = 123
 
+.. newsletter::
 
 Specify Data Types to Optimize Space
 ************************************

@@ -1,7 +1,7 @@
 The Importance of Doing a Backup
 ================================
 
-:tags: backup, rsync, recovery
+:tags: backup, rsync, recovery, security
 :og_description: Back ups are a solution to the most common problems with computers; however almost everybody fails to do them.
 :header: {attach}external_drive.jpg
 :date: 2018-02-19
