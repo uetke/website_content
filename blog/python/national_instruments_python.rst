@@ -7,6 +7,7 @@ Controlling a National Instruments Card with Python
 :og_description: Don't depend on Labview; learn how to control National Instruments cards directly with Python.
 :date: 2018-02-21
 :author: Aquiles Carattino
+:canonical: https://www.pythonforthelab.com/blog/controlling-a-national-instruments-card-with-python/
 
 One of the most common devices in a lab is a National Instruments acquisition card, also called a DAQ. As you probably know by now, the default programming environment for such cards is Lab View, but what you may not be aware is that there are libraries for interfacing with other languages. NI provides a common driver to all of their devices called *NI-DAQmx* and how to use their hardware through the C programming language is `well documented <http://zone.ni.com/reference/en-XX/help/370471AA-01/>`_.
 
